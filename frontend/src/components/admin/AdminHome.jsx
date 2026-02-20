@@ -1,29 +1,42 @@
-export default function AdminHome() {
+import { useEffect, useState } from "react";
+import API from "../common/AxiosInstance";
+
+function AdminHome() {
+  const [users, setUsers] = useState([]);
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    API.get("/admin/users").then(res => setUsers(res.data));
+    API.get("/admin/courses").then(res => setCourses(res.data));
+  }, []);
+
+  const deleteUser = async (id) => {
+    await API.delete(`/admin/user/${id}`);
+    alert("User Deleted");
+  };
+
   return (
-    <div className="container mt-5">
-      <h3>User Management</h3>
+    <div>
+      <h2>Admin Panel</h2>
 
-      <table className="table table-dark table-striped mt-3">
-        <thead>
-          <tr>
-            <th>User ID</th>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Type</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+      <h3>Users</h3>
+      {users.map(u=>(
+        <div key={u._id}>
+          {u.name} - {u.type}
+          <button onClick={()=>deleteUser(u._id)}>
+            Delete
+          </button>
+        </div>
+      ))}
 
-        <tbody>
-          <tr>
-            <td>652ea...</td>
-            <td>Admin</td>
-            <td>admin@mail.com</td>
-            <td>Admin</td>
-            <td className="text-danger">DELETE</td>
-          </tr>
-        </tbody>
-      </table>
+      <h3>Courses</h3>
+      {courses.map(c=>(
+        <div key={c._id}>
+          {c.title}
+        </div>
+      ))}
     </div>
   );
 }
+
+export default AdminHome;

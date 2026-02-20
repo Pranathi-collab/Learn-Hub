@@ -1,41 +1,33 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import NavBar from "./components/common/NavBar";
+import Footer from "./components/common/Footer";
 
 import Home from "./components/common/Home";
 import Login from "./components/common/Login";
 import Register from "./components/common/Register";
+import AllCourses from "./components/common/AllCourses";
 import Dashboard from "./components/common/Dashboard";
 
-import StudentHome from "./components/user/student/StudentHome";
-import TeacherHome from "./components/user/teacher/TeacherHome";
-import AdminHome from "./components/admin/AdminHome";
-
-import AddCourse from "./components/user/teacher/AddCourse";
-import EnrolledCourses from "./components/user/student/EnrolledCourses";
-import AllCourses from "./components/common/AllCourses";
+import PaymentPage from "./components/payment/PaymentPage";
+import CoursePlayer from "./components/course/CoursePlayer";
 
 function App() {
   return (
     <BrowserRouter>
-
-      {/* 🔹 Navbar appears on all pages */}
       <NavBar />
-
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/get-courses" element={<AllCourses />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
-        <Route path="/student" element={<StudentHome />} />
-        <Route path="/teacher" element={<TeacherHome />} />
-        <Route path="/admin" element={<AdminHome />} />
-
-        <Route path="/add-course" element={<AddCourse />} />
-        <Route path="/enrolled" element={<EnrolledCourses />} />
-        <Route path="/courses" element={<AllCourses />} />
+        <Route path="/payment/:id" element={<PaymentPage />} />
+        <Route path="/course/:id" element={<CoursePlayer />} />
       </Routes>
+
+      
+      <Footer />
 
     </BrowserRouter>
   );

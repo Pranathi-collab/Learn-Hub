@@ -1,25 +1,58 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+function NavBar() {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+
+  const logout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">
-        LearnHub
-      </Link>
+    <div
+      style={{
+        background: "#fff",
+        padding: "15px 60px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
+      }}
+    >
+      <h2 style={{ color: "#4e73df" }}>LearnHub</h2>
 
-      <div className="ms-auto">
-        <Link className="btn btn-outline-light me-2" to="/courses">
-          Courses
-        </Link>
+      <div>
+        <Link to="/" style={{ margin: "0 15px" }}>Home</Link>
+        <Link to="/get-courses" style={{ margin: "0 15px" }}>Courses</Link>
 
-        <Link className="btn btn-outline-light me-2" to="/login">
-          Login
-        </Link>
+        {!user && (
+          <>
+            <Link to="/login" style={{ margin: "0 15px" }}>Login</Link>
+            <Link to="/register" style={{ margin: "0 15px" }}>Register</Link>
+          </>
+        )}
 
-        <Link className="btn btn-warning" to="/register">
-          Register
-        </Link>
+        {user && (
+          <>
+            <Link to="/dashboard" style={{ margin: "0 15px" }}>Dashboard</Link>
+            <button
+              onClick={logout}
+              style={{
+                padding: "6px 15px",
+                borderRadius: "5px",
+                border: "none",
+                background: "red",
+                color: "white"
+              }}
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
-    </nav>
+    </div>
   );
 }
+
+export default NavBar;

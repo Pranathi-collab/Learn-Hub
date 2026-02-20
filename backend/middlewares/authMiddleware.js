@@ -1,23 +1,30 @@
 const jwt = require("jsonwebtoken");
 
-exports.verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
+module.exports = async(req, res, next) => {
+  try{
+    const authorizationheader =req.headers["authorization"];
+    if(!authorizationheader){
+      return res.status(401).send({
+        message:"Authorization header is missing",
+        success:false,
+      });
+    }
 
-  if (!token) return res.status(401).json({ message: "No token" });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch {
-    res.status(401).json({ message: "Invalid token" });
+    const token = req.headers["authorization"].split(" ")[1];
+    jwt.verify(tooken, process.env,JWT_KEY,(err, decode) =>{
+      if(err){
+        return res.status(200)
+        .send({
+          message: "token is not valid",
+          success:false
+        });
+      }else{
+        req.body.userId = decode.id;
+        next();
+      }
+    });
+  }catch(error){
+    console.error(error);
+    res.status(500).send({message:"Internal server error",success: false});
   }
-};
-
-exports.roleCheck = (role) => {
-  return (req, res, next) => {
-    if (req.user.type !== role)
-      return res.status(403).json({ message: "Access denied" });
-    next();
-  };
-};
+}
