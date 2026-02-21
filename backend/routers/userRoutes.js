@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 500 * 1024 * 1024, // 500MB limit
+    fileSize: 500 * 1024 * 1024, 
   },
   fileFilter: function (req, file, callback) {
     const ext = path.extname(file.originalname);
@@ -61,7 +61,7 @@ router.post(
   postCourseController
 );
 
-// Get all courses (Public)
+// Get all courses 
 router.get("/getallcourses", getAllCoursesController);
 
 // Get teacher courses

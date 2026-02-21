@@ -98,7 +98,7 @@ function CoursePlayer() {
         </div>
       ))}
 
-      {/* Certificate Button ONLY when 100% */}
+      {/* Certificate Button */}
       {progress === 100 && (
         <button
           onClick={downloadCertificate}

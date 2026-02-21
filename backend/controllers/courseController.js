@@ -149,7 +149,7 @@ const getCertificateController = async (req, res) => {
 
     doc.moveDown();
 
-    // ✅ USE ACTUAL USER NAME HERE
+    //  USE ACTUAL USER NAME HERE
     doc.fontSize(26).text(user.name, {
       align: "center"
     });
@@ -199,7 +199,7 @@ const updateProgressController = async (req, res) => {
     // update user progress
     course.progress[userId] = Number(progress);
 
-    // 🔥 VERY IMPORTANT: tell mongoose object changed
+  
     course.markModified("progress");
 
     await course.save();

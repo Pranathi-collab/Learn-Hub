@@ -30,7 +30,7 @@ function StudentHome() {
     fetchCourses();
   }, []);
 
-  // 🔥 FIXED FILTER
+  // FIXED FILTER
   const filteredCourses = courses.filter((course) =>
     course.C_title?.toLowerCase().includes(search.toLowerCase())
   );
@@ -46,7 +46,7 @@ function StudentHome() {
     cursor: "pointer",
   };
 
-  // 🔥 UPDATE PROGRESS
+  //  UPDATE PROGRESS
   const updateProgress = async (courseId, percent) => {
     try {
       await API.post(`/progress/${courseId}`, {
@@ -67,7 +67,7 @@ function StudentHome() {
         Student Dashboard
       </h2>
 
-      {/* 🔍 Search */}
+      {/*  Search */}
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
         <input
           placeholder="Search by title"
@@ -82,7 +82,7 @@ function StudentHome() {
         />
       </div>
 
-      {/* 📚 Course Cards */}
+      {/* Course Cards */}
       <div
         style={{
           display: "flex",
@@ -125,7 +125,7 @@ function StudentHome() {
                   </button>
                 ) : (
                   <>
-                    {/* 🎥 Video */}
+                    {/* Video */}
                     {course.sections?.[0]?.video && (
                       <video
                         width="100%"
@@ -139,7 +139,7 @@ function StudentHome() {
                       </video>
                     )}
 
-                    {/* 📊 Progress Bar */}
+                    {/* Progress Bar */}
                     <div
                       style={{
                         marginTop: "10px",
@@ -158,7 +158,7 @@ function StudentHome() {
                       />
                     </div>
 
-                    {/* ✅ Complete Button */}
+                    {/*  Complete Button */}
                     {userProgress < 100 && (
                       <button
                         style={buttonStyle}
@@ -170,7 +170,7 @@ function StudentHome() {
                       </button>
                     )}
 
-                    {/* 🎓 Certificate */}
+                    {/*  Certificate */}
                     {userProgress === 100 && (
                       <button
                         style={{

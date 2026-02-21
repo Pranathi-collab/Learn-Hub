@@ -5,9 +5,9 @@ const userSchema = require("../schemas/userModel");
 const courseSchema = require("../schemas/courseModel");
 const enrolledCourseSchema = require("../schemas/enrolledCourseModel");
 
-////////////////////////////////////////////////////
+
 // REGISTER
-////////////////////////////////////////////////////
+
 const registerController = async (req, res) => {
   try {
     const existsUser = await userSchema.findOne({ email: req.body.email });
@@ -41,9 +41,9 @@ const registerController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // LOGIN
-////////////////////////////////////////////////////
+
 const loginController = async (req, res) => {
   try {
     const user = await userSchema.findOne({ email: req.body.email });
@@ -89,9 +89,9 @@ const loginController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // GET ALL COURSES
-////////////////////////////////////////////////////
+
 const getAllCoursesController = async (req, res) => {
   try {
     const allCourses = await courseSchema.find();
@@ -108,9 +108,8 @@ const getAllCoursesController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
 // CREATE COURSE (Teacher)
-////////////////////////////////////////////////////
+
 const postCourseController = async (req, res) => {
   try {
     const {
@@ -148,9 +147,9 @@ const postCourseController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // GET TEACHER COURSES
-////////////////////////////////////////////////////
+
 const getAllCoursesuserController = async (req, res) => {
   try {
     const allCourses = await courseSchema.find({
@@ -169,9 +168,9 @@ const getAllCoursesuserController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // DELETE COURSE
-////////////////////////////////////////////////////
+
 const deleteCourseController = async (req, res) => {
   try {
     const { courseid } = req.params;
@@ -197,9 +196,9 @@ const deleteCourseController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // ENROLL COURSE
-////////////////////////////////////////////////////
+
 const enrolledCourseController = async (req, res) => {
   try {
     const { courseid } = req.params;
@@ -248,9 +247,9 @@ const enrolledCourseController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // SEND COURSE CONTENT
-////////////////////////////////////////////////////
+
 const sendCourseContentController = async (req, res) => {
   try {
     const { courseid } = req.params;
@@ -284,9 +283,9 @@ const sendCourseContentController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // COMPLETE SECTION
-////////////////////////////////////////////////////
+
 const completeSectionController = async (req, res) => {
   try {
     const { courseId, sectionId, userId } = req.body;
@@ -326,9 +325,9 @@ const completeSectionController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 // GET ALL COURSES FOR USER
-////////////////////////////////////////////////////
+
 const sendAllCoursesUserController = async (req, res) => {
   try {
     const { userId } = req.body;
@@ -355,7 +354,7 @@ const sendAllCoursesUserController = async (req, res) => {
   }
 };
 
-////////////////////////////////////////////////////
+
 module.exports = {
   registerController,
   loginController,

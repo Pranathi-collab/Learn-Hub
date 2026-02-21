@@ -4,9 +4,9 @@ const enrolledCourseSchema = require("../schemas/enrolledCourseModel");
 const coursePaymentSchema = require("../schemas/coursePaymentModel");
 
 
-/* ===========================================
+/* 
    GET ALL USERS
-=========================================== */
+*/
 const getAllUsersController = async (req, res) => {
   try {
     const allUsers = await userSchema.find();
@@ -34,9 +34,9 @@ const getAllUsersController = async (req, res) => {
 };
 
 
-/* ===========================================
+/* 
    GET ALL COURSES
-=========================================== */
+ */
 const getAllCoursesController = async (req, res) => {
   try {
     const allCourses = await courseSchema.find();
@@ -64,9 +64,9 @@ const getAllCoursesController = async (req, res) => {
 };
 
 
-/* ===========================================
+/* 
    DELETE COURSE
-=========================================== */
+*/
 const deleteCourseController = async (req, res) => {
   try {
     const { courseid } = req.params;
@@ -95,9 +95,9 @@ const deleteCourseController = async (req, res) => {
 };
 
 
-/* ===========================================
+/*
    DELETE USER
-=========================================== */
+ */
 const deleteUserController = async (req, res) => {
   try {
     const { userid } = req.params;
@@ -126,9 +126,9 @@ const deleteUserController = async (req, res) => {
 };
 
 
-/* ===========================================
+/* 
    GET ALL ENROLLED COURSES
-=========================================== */
+*/
 const getAllEnrollmentsController = async (req, res) => {
   try {
     const enrollments = await enrolledCourseSchema
@@ -159,9 +159,9 @@ const getAllEnrollmentsController = async (req, res) => {
 };
 
 
-/* ===========================================
+/*
    GET ALL PAYMENTS
-=========================================== */
+ */
 const getAllPaymentsController = async (req, res) => {
   try {
     const payments = await coursePaymentSchema

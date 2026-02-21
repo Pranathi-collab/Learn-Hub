@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import heroImg from "../../assets/hero.jpg"; // Add image inside assets
+import heroImg from "../../assets/hero.jpg"; 
 
 function Home() {
   const navigate = useNavigate();

@@ -9,7 +9,7 @@ function AllCourses() {
       try {
         const res = await API.get("/user/getallcourses");
 
-        // Backend sends: { success: true, data: [...] }
+       
         setCourses(res.data.data);
       } catch (error) {
         console.error("Error fetching courses:", error);

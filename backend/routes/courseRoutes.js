@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// 🔥 IMPORT CONTROLLERS FIRST
+// IMPORT CONTROLLERS FIRST
 const {
   postCourseController,
   getAllCoursesController,
@@ -11,7 +11,7 @@ const {
   
 } = require("../controllers/courseController");
 
-// 🔥 IMPORT MULTER
+//  IMPORT MULTER
 const upload = require("../middlewares/uploadMiddleware");
 
 // ROUTES

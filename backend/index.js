@@ -32,7 +32,7 @@ if (!fs.existsSync(uploadsDir)) {
 
 app.use("/uploads", express.static(uploadsDir));
 
-// Test route (ADD THIS TEMPORARILY)
+
 app.get("/", (req, res) => {
   res.send("Backend is working!");
 });
